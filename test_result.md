@@ -164,15 +164,18 @@ backend:
 
   - task: "Prayer Times Management System"
     implemented: true
-    working: false
+    working: true
     file: "server.py"
-    stuck_count: 1
+    stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: false
         agent: "main"
         comment: "Prayer times creation/update implemented but date serialization issues fixed. Need to verify prayer times are actually being stored and retrieved correctly"
+      - working: true
+        agent: "testing"
+        comment: "✅ FIXED & TESTED: Found and fixed critical issues: 1) API parameter mismatch (backend expected 'date_str' but frontend sent 'date'), 2) Sample data initialization had BSON serialization error with date objects. Fixed both issues. Prayer times now working perfectly - can retrieve by city_id and mosque_id, admin can create/update prayer times. All 4 sample mosques have prayer times for today."
 
   - task: "Sample Data Initialization"
     implemented: true
