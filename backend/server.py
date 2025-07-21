@@ -11,7 +11,7 @@ from typing import List, Optional
 import uuid
 from datetime import datetime, date, timedelta
 import jwt
-from passlib.context import PasslibContext
+from passlib.context import CryptContext
 import asyncio
 
 
@@ -31,7 +31,7 @@ api_router = APIRouter(prefix="/api")
 
 # Security setup
 security = HTTPBearer()
-pwd_context = PasslibContext(schemes=["bcrypt"], deprecated="auto")
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 SECRET_KEY = "your-secret-key-here"  # In production, use environment variable
 ALGORITHM = "HS256"
 
