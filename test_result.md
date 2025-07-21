@@ -149,15 +149,18 @@ backend:
 
   - task: "Admin CRUD Operations for Mosques"
     implemented: true
-    working: "NA"
+    working: true
     file: "server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "NA"
         agent: "main"
         comment: "Implemented POST, PUT, DELETE endpoints for mosque management requiring admin authentication"
+      - working: true
+        agent: "testing"
+        comment: "✅ TESTED: All admin CRUD operations working perfectly. POST /api/admin/mosques creates mosques, PUT updates them, DELETE soft-deletes (sets is_active=false). Authentication required and working."
 
   - task: "Prayer Times Management System"
     implemented: true
