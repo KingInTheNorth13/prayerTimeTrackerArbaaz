@@ -119,15 +119,18 @@ backend:
 
   - task: "Authentication System (JWT-based admin login)"
     implemented: true
-    working: "NA"
+    working: true
     file: "server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "NA"
         agent: "main"
         comment: "Implemented JWT-based authentication with bcrypt password hashing, demo admin user (admin@mosque.com/admin123) created"
+      - working: true
+        agent: "testing"
+        comment: "✅ TESTED: Admin login working perfectly with demo credentials (admin@mosque.com/admin123). JWT token generation and authentication successful."
 
   - task: "Public API Endpoints (cities, mosques, prayer-times)"
     implemented: true
