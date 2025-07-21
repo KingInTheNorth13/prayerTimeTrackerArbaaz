@@ -335,7 +335,10 @@ async def init_sample_data():
         if today.weekday() == 4:  # Friday
             prayer_times.jummah = "13:00"
         
-        await db.prayer_times.insert_one(prayer_times.dict())
+        # Convert date to string for MongoDB
+        prayer_times_dict = prayer_times.dict()
+        prayer_times_dict["date"] = prayer_times_dict["date"].isoformat()
+        await db.prayer_times.insert_one(prayer_times_dict)
 
 # Include the router in the main app
 app.include_router(api_router)
