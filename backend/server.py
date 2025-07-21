@@ -159,7 +159,8 @@ async def get_mosques(city_id: Optional[str] = None, search: Optional[str] = Non
 
 @api_router.get("/prayer-times")
 async def get_prayer_times(mosque_id: Optional[str] = None, city_id: Optional[str] = None, date: Optional[str] = None):
-    target_date = datetime.strptime(date, "%Y-%m-%d").date() if date else date.today()
+    from datetime import date as date_module
+    target_date = datetime.strptime(date, "%Y-%m-%d").date() if date else date_module.today()
     
     if mosque_id:
         # Get prayer times for specific mosque
