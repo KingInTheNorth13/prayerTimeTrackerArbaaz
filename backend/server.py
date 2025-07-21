@@ -272,13 +272,17 @@ async def create_prayer_times(prayer_times: PrayerTimesCreate, current_user: Use
     
     if existing:
         # Update existing
+        prayer_times_dict = prayer_times_obj.dict()
+        prayer_times_dict["date"] = prayer_times_dict["date"].isoformat()
         await db.prayer_times.update_one(
             {"id": existing["id"]},
-            {"$set": prayer_times_obj.dict()}
+            {"$set": prayer_times_dict}
         )
     else:
         # Create new
-        await db.prayer_times.insert_one(prayer_times_obj.dict())
+        prayer_times_dict = prayer_times_obj.dict()
+        prayer_times_dict["date"] = prayer_times_dict["date"].isoformat()
+        await db.prayer_times.insert_one(prayer_times_dict)
     
     return prayer_times_obj
 
