@@ -270,14 +270,12 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Prayer Times Management System"
-    - "Public API Endpoints (cities, mosques, prayer-times)"
+    - "Public Prayer Times View"
     - "Admin Authentication UI"
     - "Admin Dashboard for Mosque Management"
-  stuck_tasks:
-    - "Prayer Times Management System"
+  stuck_tasks: []
   test_all: false
-  test_priority: "stuck_first"
+  test_priority: "high_first"
 
 agent_communication:
   - agent: "main"
