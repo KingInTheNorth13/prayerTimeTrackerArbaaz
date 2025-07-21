@@ -1,38 +1,213 @@
 .App {
-    text-align: center;
-}
-
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+  text-align: center;
 }
 
 .App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+  background-color: #282c34;
+  padding: 20px;
+  color: white;
+  min-height: 30vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .App-link {
-    color: #61dafb;
+  color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Prayer time card animations */
+.prayer-card {
+  transition: all 0.3s ease;
+}
+
+.prayer-card:hover {
+  transform: translateY(-2px);
+}
+
+/* Loading animations */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Responsive design helpers */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+/* Custom button styles */
+.btn-primary {
+  background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+/* Islamic theme colors */
+:root {
+  --islamic-green: #00A651;
+  --islamic-blue: #004B87;
+  --islamic-gold: #FFD700;
+}
+
+.islamic-gradient {
+  background: linear-gradient(135deg, var(--islamic-blue) 0%, var(--islamic-green) 100%);
+}
+
+/* Prayer time cards styling */
+.prayer-time-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.prayer-time-item {
+  transition: all 0.2s ease;
+}
+
+.prayer-time-item:hover {
+  background-color: #f8fafc;
+  transform: scale(1.02);
+}
+
+/* Hero section styling */
+.hero-overlay {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.8) 0%, rgba(67, 56, 202, 0.8) 100%);
+}
+
+/* Admin dashboard styling */
+.admin-tab {
+  transition: all 0.2s ease;
+}
+
+.admin-tab:hover {
+  background-color: rgba(59, 130, 246, 0.1);
+}
+
+.admin-tab.active {
+  color: #3b82f6;
+  border-bottom-color: #3b82f6;
+}
+
+/* Form styling */
+.form-input {
+  transition: all 0.2s ease;
+}
+
+.form-input:focus {
+  border-color: #3b82f6;
+  ring-color: rgba(59, 130, 246, 0.5);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Mosque card styling */
+.mosque-card {
+  transition: all 0.3s ease;
+  border-left: 4px solid #3b82f6;
+}
+
+.mosque-card:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transform: translateX(4px);
+}
+
+/* Search bar styling */
+.search-input {
+  background: linear-gradient(to right, #ffffff, #f8fafc);
+}
+
+/* Status indicators */
+.status-active {
+  background-color: #10b981;
+}
+
+.status-inactive {
+  background-color: #ef4444;
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  .hero-section {
+    height: 300px;
+  }
+  
+  .hero-section h2 {
+    font-size: 2rem;
+  }
+  
+  .prayer-times-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .admin-tabs {
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  
+  .admin-tab {
+    display: inline-block;
+    white-space: nowrap;
+  }
+}
+
+/* Print styles for prayer schedules */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .prayer-card {
+    break-inside: avoid;
+    margin-bottom: 1rem;
+  }
+  
+  body {
+    font-size: 12px;
+  }
+}
+
+/* Dark mode support (future enhancement) */
+@media (prefers-color-scheme: dark) {
+  /* Add dark mode styles if needed */
 }
