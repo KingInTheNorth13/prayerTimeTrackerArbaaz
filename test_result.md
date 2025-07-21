@@ -138,11 +138,14 @@ backend:
     file: "server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: true
         agent: "main"
         comment: "API endpoints working - /api/cities and /api/mosques return data successfully. /api/prayer-times has issues with date queries"
+      - working: true
+        agent: "testing"
+        comment: "✅ TESTED: All public endpoints working perfectly. /api/cities returns 2 cities (Karachi, Lahore), /api/mosques returns 4+ mosques with search functionality, /api/prayer-times working with city_id and mosque_id queries. Fixed parameter name mismatch (date vs date_str)."
 
   - task: "Admin CRUD Operations for Mosques"
     implemented: true
