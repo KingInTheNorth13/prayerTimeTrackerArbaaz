@@ -2,16 +2,82 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-        "Helvetica Neue", sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;600;700&display=swap');
+
+:root {
+  /* Fonts */
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Light Mode Palette */
+  --background-light: #F0F2F5;
+  --foreground-light: #FFFFFF;
+  --text-primary-light: #1a202c;
+  --text-secondary-light: #4a5568;
+  --primary-light: #4A55A2;
+  --secondary-light: #7857A9;
+  --accent-light: #D69E2E;
+
+  /* Dark Mode Palette */
+  --background-dark: #0D1117; /* Deep Blue/Black */
+  --foreground-dark: #161B22; /* Slightly lighter card background */
+  --text-primary-dark: #E6EDF3;
+  --text-secondary-dark: #8B949E;
+  --primary-dark: #58A6FF; /* A spiritual blue */
+  --secondary-dark: #A371F7; /* A serene purple */
+  --accent-dark: #F1B44C; /* Soft Gold */
+  --border-dark: #30363D;
 }
 
-code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-        monospace;
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Default to Dark Mode */
+body {
+  background-color: var(--background-dark);
+  color: var(--text-primary-dark);
+}
+
+/* Optional Light Mode */
+body.light-mode {
+  background-color: var(--background-light);
+  color: var(--text-primary-light);
+}
+
+/* --- Dynamic Backgrounds --- */
+.bg-morning {
+  background: linear-gradient(135deg, #4F3A65 0%, #7A5C8F 50%, #A77DBE 100%);
+}
+
+.bg-afternoon {
+  background: linear-gradient(135deg, #3A4E65 0%, #5C7A8F 50%, #7D9ABE 100%);
+}
+
+.bg-evening {
+  background: linear-gradient(135deg, #653A4F 0%, #8F5C7A 50%, #BE7DA7 100%);
+}
+
+.bg-night {
+  background: linear-gradient(135deg, #1F2937 0%, #374151 50%, #4B5563 100%);
+}
+
+/* Optional: Add a subtle pattern overlay for texture */
+.bg-morning, .bg-afternoon, .bg-evening, .bg-night {
+  position: relative;
+}
+
+.bg-morning::before, .bg-afternoon::before, .bg-evening::before, .bg-night::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80"><path fill="%23ffffff" fill-opacity="0.05" d="M0 0h40v40H0zM40 40h40v40H40z"></path></svg>');
+  z-index: 0;
 }
